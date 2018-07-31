@@ -74,15 +74,7 @@
 
   // Обработчик события клика по карте.
   window.rotate = function (targetElement, options) {
-    var onCardClick = function () {
-      // Запускаем анимацию вращения
-      animateRotate(targetElement, 800, linearTimig, rotate, changeBackground, options);
-
-      // Помечаем перевернутую карту
-      window.game.count(targetElement);
-      console.log(window.game.openCards)
-    };
-
-    targetElement.addEventListener('click', onCardClick);
+    // Запускаем анимацию вращения
+    animateRotate(targetElement, 800, linearTimig, rotate, changeBackground, options);
   }
 })();
