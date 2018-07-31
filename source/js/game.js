@@ -42,6 +42,7 @@
     clearObject(cardDeck);
     clearObject(openCards);
     clearObject(guessedCards);
+    points = 0;
 
     window.cards.make();
 
