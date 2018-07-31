@@ -41,6 +41,12 @@
     EMPTY_CARD_CLASS_NAME: 'empty-card',
     CARDS_ON_FIELD: 9,
     HANG_TIME: 1200,
-    POINT_COEFFICIENT: 42
+    CARDS_DISPLAY_TIME: 5000,
+    POINT_COEFFICIENT: 42,
+    KEY_CODE: {
+      ENTER: 13,
+      ESC: 27
+    },
+    SUCCESSFUL_MESSAGE: 'Вы - молодец! Ваши очки:'
   };
 })();

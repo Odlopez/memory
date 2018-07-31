@@ -1,6 +1,8 @@
 'use strict';
 
 (function () {
+  var button = document.querySelector('.start__button');
+
   // Обработчик события клика на документ
   var onDocumentClick = function (e) {
     // Проверяем, кликнул ли пользователь по карте и закрыта ли эта карта, если да, запускаем код
@@ -23,8 +25,10 @@
   var functions = {
     rotate: window.rotate,
     callback: onDocumentClick,
-    delete: window.field.deleteCard
-  }
+    delete: window.field.deleteCard,
+    popup: window.popup.create
+  };
 
+  button.addEventListener('click', window.game.new);
   document.addEventListener('click', onDocumentClick);
 })();
