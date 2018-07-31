@@ -32,7 +32,7 @@
       'https://www.fotomaiki.by/media/cache/category_thumb/images/gallery/rick-and-morty/RickandMorty5.png',
       'http://liubavyshka.ru/_ph/157/1/365264989.jpg',
       'http://detkam.e-papa.ru/inc/im_cat/4822388542.png',
-      '../img/1.png',
+      'img/1.png',
     ],
     SHIRT: {
       IMAGE: 'repeating-linear-gradient(135deg,  #031927 0, #031927 10px, #508AA8 10px, #508AA8 13px)',
