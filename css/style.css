@@ -1,9 +1,13 @@
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-width: 480px;
+  max-width: 1500px;
   margin: 0 auto;
-  flex-direction: column;
+  font-size: 20px;
+  font-family: "Open Sans", arial, helvetica, sans-serif;
   background-image: url("../img/bg-4.jpg");
 }
 img {
@@ -32,16 +36,16 @@ html {
   font-weight: 700;
 }
 .card {
-  width: 200px;
-  height: 300px;
-  border-radius: 15px;
-  cursor: pointer;
+  width: 13.33333333%;
+  padding-top: 19.33333333%;
+  margin-top: 20px;
+  margin-left: 3.33333333%;
+  background-color: #ffffff;
   background-image: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
   background-repeat: no-repeat;
   background-position: center center;
-  margin-left: 50px;
-  margin-top: 20px;
-  background-color: #ffffff;
+  border-radius: 7.5%;
+  cursor: pointer;
 }
 .animate {
   -webkit-animation: rotate 0.8s forwards;
@@ -53,117 +57,119 @@ html {
 }
 @-webkit-keyframes rotate {
   0% {
+    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
     -webkit-transform: rotate3d(0, 1, 0, 0deg);
             transform: rotate3d(0, 1, 0, 0deg);
-    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
   }
   49.63% {
+    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
     -webkit-transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
             transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
-    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
   }
   50% {
+    background: url("https://3.bp.blogspot.com/--Ww2l7IzT1E/VNtRxd8fH3I/AAAAAAAANf0/dsccFz2ybHo/s1600/stacks_image_21.png") no-repeat center center;
+    background-size: 50px auto;
+    border: 2px solid #000000;
     -webkit-transform: rotate3d(0, 1, 0, 90deg) scale(1.07);
             transform: rotate3d(0, 1, 0, 90deg) scale(1.07);
-    background: url("https://3.bp.blogspot.com/--Ww2l7IzT1E/VNtRxd8fH3I/AAAAAAAANf0/dsccFz2ybHo/s1600/stacks_image_21.png") no-repeat center center;
-    background-size: 50px auto;
-    border: 2px solid #000000;
   }
   100% {
-    -webkit-transform: rotate3d(0, 1, 0, 180deg) scale(1);
-            transform: rotate3d(0, 1, 0, 180deg) scale(1);
     background: url("https://3.bp.blogspot.com/--Ww2l7IzT1E/VNtRxd8fH3I/AAAAAAAANf0/dsccFz2ybHo/s1600/stacks_image_21.png") no-repeat center center;
     background-size: 50px auto;
     border: 2px solid #000000;
+    -webkit-transform: rotate3d(0, 1, 0, 180deg) scale(1);
+            transform: rotate3d(0, 1, 0, 180deg) scale(1);
   }
 }
 @keyframes rotate {
   0% {
+    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
     -webkit-transform: rotate3d(0, 1, 0, 0deg);
             transform: rotate3d(0, 1, 0, 0deg);
-    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
   }
   49.63% {
+    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
     -webkit-transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
             transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
-    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
   }
   50% {
+    background: url("https://3.bp.blogspot.com/--Ww2l7IzT1E/VNtRxd8fH3I/AAAAAAAANf0/dsccFz2ybHo/s1600/stacks_image_21.png") no-repeat center center;
+    background-size: 50px auto;
+    border: 2px solid #000000;
     -webkit-transform: rotate3d(0, 1, 0, 90deg) scale(1.07);
             transform: rotate3d(0, 1, 0, 90deg) scale(1.07);
-    background: url("https://3.bp.blogspot.com/--Ww2l7IzT1E/VNtRxd8fH3I/AAAAAAAANf0/dsccFz2ybHo/s1600/stacks_image_21.png") no-repeat center center;
-    background-size: 50px auto;
-    border: 2px solid #000000;
   }
   100% {
-    -webkit-transform: rotate3d(0, 1, 0, 180deg) scale(1);
-            transform: rotate3d(0, 1, 0, 180deg) scale(1);
     background: url("https://3.bp.blogspot.com/--Ww2l7IzT1E/VNtRxd8fH3I/AAAAAAAANf0/dsccFz2ybHo/s1600/stacks_image_21.png") no-repeat center center;
     background-size: 50px auto;
     border: 2px solid #000000;
+    -webkit-transform: rotate3d(0, 1, 0, 180deg) scale(1);
+            transform: rotate3d(0, 1, 0, 180deg) scale(1);
   }
 }
 @-webkit-keyframes rotate-reverse {
   0% {
+    background: url("https://3.bp.blogspot.com/--Ww2l7IzT1E/VNtRxd8fH3I/AAAAAAAANf0/dsccFz2ybHo/s1600/stacks_image_21.png") no-repeat center center;
+    background-size: 50px auto;
+    border: 2px solid #000000;
     -webkit-transform: rotate3d(0, 1, 0, 0deg);
             transform: rotate3d(0, 1, 0, 0deg);
-    background: url("https://3.bp.blogspot.com/--Ww2l7IzT1E/VNtRxd8fH3I/AAAAAAAANf0/dsccFz2ybHo/s1600/stacks_image_21.png") no-repeat center center;
-    background-size: 50px auto;
-    border: 2px solid #000000;
   }
   49.63% {
-    -webkit-transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
-            transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
     background: url("https://3.bp.blogspot.com/--Ww2l7IzT1E/VNtRxd8fH3I/AAAAAAAANf0/dsccFz2ybHo/s1600/stacks_image_21.png") no-repeat center center;
     background-size: 50px auto;
     border: 2px solid #000000;
+    -webkit-transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
+            transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
   }
   50% {
+    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
     -webkit-transform: rotate3d(0, 1, 0, 90deg) scale(1.07);
             transform: rotate3d(0, 1, 0, 90deg) scale(1.07);
-    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
   }
   100% {
+    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
     -webkit-transform: rotate3d(0, 1, 0, 180deg) scale(1);
             transform: rotate3d(0, 1, 0, 180deg) scale(1);
-    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
   }
 }
 @keyframes rotate-reverse {
   0% {
+    background: url("https://3.bp.blogspot.com/--Ww2l7IzT1E/VNtRxd8fH3I/AAAAAAAANf0/dsccFz2ybHo/s1600/stacks_image_21.png") no-repeat center center;
+    background-size: 50px auto;
+    border: 2px solid #000000;
     -webkit-transform: rotate3d(0, 1, 0, 0deg);
             transform: rotate3d(0, 1, 0, 0deg);
-    background: url("https://3.bp.blogspot.com/--Ww2l7IzT1E/VNtRxd8fH3I/AAAAAAAANf0/dsccFz2ybHo/s1600/stacks_image_21.png") no-repeat center center;
-    background-size: 50px auto;
-    border: 2px solid #000000;
   }
   49.63% {
-    -webkit-transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
-            transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
     background: url("https://3.bp.blogspot.com/--Ww2l7IzT1E/VNtRxd8fH3I/AAAAAAAANf0/dsccFz2ybHo/s1600/stacks_image_21.png") no-repeat center center;
     background-size: 50px auto;
     border: 2px solid #000000;
+    -webkit-transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
+            transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
   }
   50% {
+    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
     -webkit-transform: rotate3d(0, 1, 0, 90deg) scale(1.07);
             transform: rotate3d(0, 1, 0, 90deg) scale(1.07);
-    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
   }
   100% {
+    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
     -webkit-transform: rotate3d(0, 1, 0, 180deg) scale(1);
             transform: rotate3d(0, 1, 0, 180deg) scale(1);
-    background: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
   }
 }
 .field {
-  width: 1500px;
   display: flex;
   flex-flow: row wrap;
+  width: 100%;
+  max-width: 1500px;
+  margin-left: -3.33333333%;
 }
 .empty-card {
-  width: 200px;
-  height: 300px;
-  margin-left: 50px;
+  width: 13.33333333%;
+  padding-top: 19.33333333%;
+  margin-left: 3.33333333%;
   margin-top: 20px;
 }
 .popup {
@@ -176,7 +182,7 @@ html {
   width: 100vw;
   height: 100vh;
   font-weight: 400;
-  font-size: 65px;
+  font-size: 3.25rem;
   font-family: "Open Sans", arial, helvetica, sans-serif;
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.85);
@@ -203,7 +209,7 @@ html {
 .start__button {
   padding: 20px;
   font-weight: 700;
-  font-size: 45px;
+  font-size: 2.25rem;
   font-family: "Open Sans", arial, helvetica, sans-serif;
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.8);
