@@ -35,26 +35,35 @@
   };
 
   // Функция очищает поле, объекты с данными, скрывает основной экран, запускает игру
-  var newGame = function () {
-    field.innerHTML = '';
-    start.style.display = 'none';
+  var newGame = function (callback) {
+    return function () {
+      field.innerHTML = '';
+      start.style.display = 'none';
 
-    clearObject(cardDeck);
-    clearObject(openCards);
-    clearObject(guessedCards);
-    points = 0;
+      clearObject(cardDeck);
+      clearObject(openCards);
+      clearObject(guessedCards);
+      points = 0;
 
-    window.cards.make();
+      window.cards.make();
 
-    for (var key in cardDeck) {
-      window.rotate(cardDeck[key].element, cardDeck[key]);
-    }
-
-    setTimeout(function() {
+      // Переворачиваем все карты рубашкой вниз
       for (var key in cardDeck) {
         window.rotate(cardDeck[key].element, cardDeck[key]);
       }
-    }, window.constants.CARDS_DISPLAY_TIME);
+
+      // Отключаем возможность клацать на карты
+      document.removeEventListener('click', callback);
+
+      // Через заданное время возвращаем карты обратно рубашкой кверху и разрешаем клацать пользователю по ним
+      setTimeout(function() {
+        for (var key in cardDeck) {
+          window.rotate(cardDeck[key].element, cardDeck[key]);
+        }
+
+        document.addEventListener('click', callback);
+      }, window.constants.CARDS_DISPLAY_TIME);
+    }
   };
 
   // Очищает поле, инициализирует главный экран
@@ -82,8 +91,6 @@
     } else {
       points -= Object.keys(guessedCards).length * window.constants.POINT_COEFFICIENT;
     }
-
-    console.log(points)
   };
 
   /**

@@ -24,9 +24,15 @@
       'https://img-fotki.yandex.ru/get/15525/133310687.19f/0_e613b_297f891a_S.png',
       'http://www.blaeg.com/wp-content/uploads/2014/10/ruby-150x150.png',
       'http://celebwallpapers.net/wp-content/uploads/2017/11/ghost-image-spooky-ghost-png-picture-of-ghost-image-150x150.png',
-      'http://celebwallpapers.net/wp-content/uploads/2017/12/ball-images-beach-ball-png-vector-clipart-of-ball-images-150x150.png',
-      'https://img-fotki.yandex.ru/get/4428/76074362.20d/0_afe72_987b9c1c_S.jpg'
-
+      'https://img-fotki.yandex.ru/get/4428/76074362.20d/0_afe72_987b9c1c_S.jpg',
+      'https://joyjoyscuba.com/wp-content/uploads/2017/04/fish_1-150x150.png',
+      'https://download-telegram.ru/wp-content/uploads/2015/06/animals-20-150x150.png',
+      'http://trikky.ru/wp-content/blogs.dir/1/files/2018/02/mystery_twins__by_summerbkt-d5d8001-150x150.png',
+      'https://teinon.net/ficbook/design/presents/supercat.png',
+      'https://www.fotomaiki.by/media/cache/category_thumb/images/gallery/rick-and-morty/RickandMorty5.png',
+      'http://liubavyshka.ru/_ph/157/1/365264989.jpg',
+      'http://detkam.e-papa.ru/inc/im_cat/4822388542.png',
+      '../img/1.png',
     ],
     SHIRT: {
       IMAGE: 'repeating-linear-gradient(135deg,  #031927 0, #031927 10px, #508AA8 10px, #508AA8 13px)',

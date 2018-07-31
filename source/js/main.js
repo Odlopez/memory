@@ -15,7 +15,6 @@
 
       // Помечаем перевернутую карту
       window.game.logic(targetCard, functions);
-      console.log(window.game.openCards)
     } else if (e.target.dataset.number in window.game.openCards) {
       alert('Эта карта уже открыта');
     }
@@ -29,6 +28,6 @@
     popup: window.popup.create
   };
 
-  button.addEventListener('click', window.game.new);
+  button.addEventListener('click', window.game.new(onDocumentClick));
   document.addEventListener('click', onDocumentClick);
 })();
