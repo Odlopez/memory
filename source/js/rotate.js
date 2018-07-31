@@ -23,11 +23,11 @@
     if (isShirt === 'true') {
       elem.style.backgroundImage = options.SHIRT.IMAGE;
       elem.style.backgroundSize = options.SHIRT.SIZE;
-      elem.style.border = options.SHIRT.BORDER;
+      elem.style.boxShadow = options.SHIRT.BORDER;
     } else {
       elem.style.backgroundImage = 'url(' +  options.URL + ')';
       elem.style.backgroundSize = options.FACE.SIZE;
-      elem.style.border = options.FACE.BORDER;
+      elem.style.boxShadow = options.FACE.BORDER;
     }
   };
 

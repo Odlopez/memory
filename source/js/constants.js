@@ -41,7 +41,7 @@
     },
     FACE: {
       SIZE: '95% auto',
-      BORDER: '2px solid black'
+      BORDER: 'inset 0 0 0 2px rgb(0, 0, 0)'
     },
     CARD_CLASS_NAME: 'card',
     EMPTY_CARD_CLASS_NAME: 'empty-card',

@@ -1,6 +1,7 @@
 .empty-card {
-  width: 200px;
-  height: 300px;
-  margin-left: 50px;
+  @width: (200 / 15) + 0%;
+  width: @width;
+  padding-top: @width * 1.45;
+  margin-left: @indent;
   margin-top: 20px;
 }
