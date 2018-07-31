@@ -4,6 +4,15 @@
   var field = document.querySelector('.field');
   var cardDeck = {};
   var openCards = {};
+  var guessedCards = {};
+  var points = 0;
+
+  // Очищает переданный в качестве аргумента в функцию объект
+  var clearObject = function (obj) {
+    Object.keys(obj).forEach(function (prop) {
+      delete obj[prop];
+    });
+  };
 
   // Добавляем карту к 'открытым', если она была закрыта, и удаляем из 'открытых', если она была открыта
   var changeStatus = function (card) {
@@ -14,21 +23,39 @@
     }
   };
 
-  // Выбираем карту и переворачиваем ее, удаляя или добавляя к групее 'открытых карт'
+  // Находим выбранную карту в колоде и запускаем функцию изменения статуса на 'открытую карту'
   var checkCard = function (targetCard) {
-    for (var i = 0; i < field.children.length; i++) {
-      if (cardDeck[i].element === targetCard) {
-        changeStatus(cardDeck[i]);
+    for (var key in cardDeck) {
+      if (cardDeck[key].element === targetCard) {
+        changeStatus(cardDeck[key]);
         return;
       }
     }
-  }
+  };
+
+  var countPoints = function (isSuccessfully, func) {
+    if (isSuccessfully) {
+      for (var key in openCards) {
+        guessedCards[key] = openCards[key];
+
+        func(cardDeck[key].element);
+
+        delete cardDeck[key];
+      }
+
+      points += Object.keys(cardDeck).length * window.constants.POINT_COEFFICIENT;
+    } else {
+      points -= Object.keys(guessedCards).length * window.constants.POINT_COEFFICIENT;
+    }
+
+    console.log(points)
+  };
 
   /**
-    Запускаем функцию выбора и переворачивания карты, и если карт становится две - подсчитываем очки.
+    Запускаем функцию подсчета очков.
    */
-  var countPoints = function (targetElement) {
-    // Здесь мы запускаем функцию выбора и переворачивания карты.
+  var performLogic = function (targetElement, functions) {
+    // Здесь мы запускаем функцию, которая изменит статус выбранной карты на 'открыта'
     checkCard(targetElement);
 
     // Чтобы было проще работать с объектом 'открытых карт', записываем его ключи в массив
@@ -37,14 +64,39 @@
     // Проверяем, если длинна массива с ключами, а соответственно, и длина объекта с открытыми картами равна двум, подсчитываем очки
     if (keys.length === 2) {
       if (openCards[keys[0]].URL === openCards[keys[1]].URL) {
-        console.log('Урааа!');
+        // Подсчитываем очки
+        countPoints(true, functions.delete);
+
+        // И очищаем объект с данными 'открытых карт'
+        clearObject(openCards);
+      } else {
+        // Отключаем возможность переворачивать другие карты
+        document.removeEventListener('click', functions.callback);
+
+        // На некоторое время показываем карты.
+        setTimeout(function () {
+          // Потом переворачиваем их обратно
+          functions.rotate(openCards[keys[0]].element, openCards[keys[0]]);
+          functions.rotate(openCards[keys[1]].element, openCards[keys[1]]);
+
+          // Подсчитываем очки
+          countPoints(false);
+
+          // И очищаем объект с данными 'открытых карт'
+          clearObject(openCards);
+
+          // Возвращаем обработчик события клика на документ, чтобы снова можно было переворачивать карты
+          document.addEventListener('click', functions.callback);
+        }, window.constants.HANG_TIME);
       }
     }
   };
 
   window.game = {
-    count: countPoints,
+    logic: performLogic,
     cardDeck: cardDeck,
-    openCards: openCards
+    openCards: openCards,
+    guessedCards: guessedCards,
+    points: points
   }
 })();
