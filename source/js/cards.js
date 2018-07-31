@@ -44,8 +44,6 @@
     });
   };
 
-  makeCards();
-
   window.cards = {
     make: makeCards,
   };

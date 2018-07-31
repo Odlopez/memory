@@ -2,6 +2,7 @@
 
 (function () {
   var field = document.querySelector('.field');
+  var start = document.querySelector('.start');
   var cardDeck = {};
   var openCards = {};
   var guessedCards = {};
@@ -33,14 +34,47 @@
     }
   };
 
-  var countPoints = function (isSuccessfully, func) {
+  // Функция очищает поле, объекты с данными, скрывает основной экран, запускает игру
+  var newGame = function () {
+    field.innerHTML = '';
+    start.style.display = 'none';
+
+    clearObject(cardDeck);
+    clearObject(openCards);
+    clearObject(guessedCards);
+
+    window.cards.make();
+
+    for (var key in cardDeck) {
+      window.rotate(cardDeck[key].element, cardDeck[key]);
+    }
+
+    setTimeout(function() {
+      for (var key in cardDeck) {
+        window.rotate(cardDeck[key].element, cardDeck[key]);
+      }
+    }, window.constants.CARDS_DISPLAY_TIME);
+  };
+
+  // Очищает поле, инициализирует главный экран
+  var startDisplayInit = function () {
+    field.innerHTML = '';
+    start.style.display = 'flex';
+  }
+
+  // Функция подсчитывает очки
+  var countPoints = function (isSuccessfully, funcGame, funcEndGame) {
     if (isSuccessfully) {
       for (var key in openCards) {
         guessedCards[key] = openCards[key];
 
-        func(cardDeck[key].element);
+        funcGame(cardDeck[key].element);
 
         delete cardDeck[key];
+
+        if (!Object.keys(cardDeck).length) {
+          funcEndGame(window.constants.SUCCESSFUL_MESSAGE, points);
+        }
       }
 
       points += Object.keys(cardDeck).length * window.constants.POINT_COEFFICIENT;
@@ -65,7 +99,7 @@
     if (keys.length === 2) {
       if (openCards[keys[0]].URL === openCards[keys[1]].URL) {
         // Подсчитываем очки
-        countPoints(true, functions.delete);
+        countPoints(true, functions.delete, functions.popup);
 
         // И очищаем объект с данными 'открытых карт'
         clearObject(openCards);
@@ -97,6 +131,8 @@
     cardDeck: cardDeck,
     openCards: openCards,
     guessedCards: guessedCards,
-    points: points
+    points: points,
+    new: newGame,
+    init: startDisplayInit
   }
 })();
