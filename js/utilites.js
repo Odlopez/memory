@@ -1,1 +1,49 @@
-"use strict";!function(){var e=function(n,r){return r=r||0,Math.round(Math.random()*(n-r)+r)},t=function(n,r){var t,u;r&&(n=n.slice(0));for(var o=n.length-1;0<o;o--)u=n[t=e(n.length-1)],n[t]=n[o],n[o]=u;return n};window.utilites={randomNumber:e,sort:t,doubles:function(n){var r=[];return n.forEach(function(n){r.push(n),r.push(n)}),n=t(r)}}}();
+'use strict';
+
+(function () {
+  // Генерирует и возвращает случайное число в пределах заданных параметров
+  var getRandomNumber = function (to, from) {
+    from = from || 0;
+
+    return Math.round(Math.random() * (to - from) + from);
+  };
+
+  // Сортирует массив методом Фишера-Йетса
+  var sortFisherYates = function (arr, isGetNewArray) {
+    var j;
+    var x;
+
+    if (isGetNewArray) {
+      arr = arr.slice(0);
+    }
+
+    for (var i = arr.length - 1; i > 0; i--) {
+      j = getRandomNumber(arr.length - 1);
+      x = arr[j];
+      arr[j] = arr[i];
+      arr[i] = x;
+    }
+
+    return arr;
+  };
+
+  // Удваивает все элементы в массиве и перемешивает их
+  var doublesArray = function (arr) {
+    var newArray = [];
+
+    arr.forEach(function (it) {
+      newArray.push(it);
+      newArray.push(it);
+    });
+
+    arr = sortFisherYates(newArray);
+
+    return arr;
+  };
+
+  window.utilites = {
+    randomNumber: getRandomNumber,
+    sort: sortFisherYates,
+    doubles: doublesArray
+  };
+})();
