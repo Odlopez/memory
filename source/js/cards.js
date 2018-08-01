@@ -16,7 +16,7 @@
   var makeCards = function () {
 
     // Сортируем массив с нашими картинками, точнее с их src'шками
-    var cards = utilites.sort(IMAGES);
+    var cards = utilites.sort(IMAGES, true);
 
     // Обрезаем лишнее в отсортированном массиве src'шек, оставляем только заданное количество картинок
     cards.length = window.constants.CARDS_ON_FIELD;
