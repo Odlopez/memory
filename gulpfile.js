@@ -93,7 +93,7 @@ gulp.task("copyJS", function () {
 gulp.task("jsChange", function (done) {
   run(
     "copyJS",
-    "htmlmin",
+    "compress",
     done
   );
 });
@@ -102,7 +102,7 @@ gulp.task("jsChange", function (done) {
 gulp.task("html", function (done) {
   run(
     "copyHTML",
-    "compress",
+    "htmlmin",
     done
   );
 });
