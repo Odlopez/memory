@@ -4,15 +4,17 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-width: 480px;
-  max-width: 1500px;
   margin: 0 auto;
+  height: 100vh;
 
   font-size: 10px;
   font-family: @font;
 
   background-image: url("../img/bg-4.jpg");
+  background-size: 100% auto;
+  border: 50px solid transparent;
 }
 
 img {
@@ -27,14 +29,20 @@ a {
 html {
   box-sizing: border-box;
   font-size: 10px;
-
-  @media (min-width: 650px) {
-    font-size: 20px;
-  }
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+@media (min-width: 650px) {
+  body {
+    border-width: 60px;
+  }
+
+  html {
+    font-size: 20px;
+  }
 }
