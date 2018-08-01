@@ -2,6 +2,7 @@
 
 (function () {
   var button = document.querySelector('.start__button');
+  var endButton = document.querySelector('.menu__end');
 
   // Обработчик события клика на документ
   var onDocumentClick = function (e) {
@@ -29,5 +30,6 @@
   };
 
   button.addEventListener('click', window.game.new(onDocumentClick));
+  endButton.addEventListener('click', window.game.init);
   document.addEventListener('click', onDocumentClick);
 })();
