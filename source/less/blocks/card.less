@@ -1,14 +1,16 @@
 .card {
-  width: 200px;
-  height: 300px;
-  border-radius: 15px;
-  cursor: pointer;
+  @width: (180 / 15) + 0%;
+  width: @width;
+  padding-top: @width * 1.4;
+  margin-top: 20px;
+  margin-left: @indent;
+
+  background-color: rgb(255, 255, 255);
   background-image: @shirt;
   background-repeat: no-repeat;
   background-position: center center;
-  margin-left: 50px;
-  margin-top: 20px;
-  background-color: rgb(255, 255, 255);
+  border-radius: 7.5%;
+  cursor: pointer;
 }
 
 .animate {
@@ -21,52 +23,52 @@
 
 @keyframes rotate {
   0% {
-    transform: rotate3d(0, 1, 0, 0deg);
     background: @shirt;
+    transform: rotate3d(0, 1, 0, 0deg);
   }
 
   49.63% {
-    transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
     background: @shirt;
+    transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
   }
 
   50% {
-    transform: rotate3d(0, 1, 0, 90deg) scale(1.07);
     background: @front-side;
     background-size: @bg-size;
     border: @border;
+    transform: rotate3d(0, 1, 0, 90deg) scale(1.07);
   }
 
   100% {
-    transform: rotate3d(0, 1, 0, 180deg) scale(1);
     background: @front-side;
     background-size: @bg-size;
     border: @border;
+    transform: rotate3d(0, 1, 0, 180deg) scale(1);
   }
 }
 
 @keyframes rotate-reverse {
   0% {
-    transform: rotate3d(0, 1, 0, 0deg);
     background: @front-side;
     background-size: @bg-size;
     border: @border;
+    transform: rotate3d(0, 1, 0, 0deg);
   }
 
   49.63% {
-    transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
     background: @front-side;
     background-size: @bg-size;
     border: @border;
+    transform: rotate3d(0, 1, 0, 88.2deg) scale(1.07);
   }
 
   50% {
-    transform: rotate3d(0, 1, 0, 90deg) scale(1.07);
     background: @shirt;
+    transform: rotate3d(0, 1, 0, 90deg) scale(1.07);
   }
 
   100% {
-    transform: rotate3d(0, 1, 0, 180deg) scale(1);
     background: @shirt;
+    transform: rotate3d(0, 1, 0, 180deg) scale(1);
   }
 }
