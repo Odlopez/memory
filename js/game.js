@@ -1,1 +1,162 @@
-"use strict";!function(){var n=document.querySelector(".field"),o=document.querySelector(".start"),i=document.querySelector(".menu__item--end"),c=document.querySelector(".menu__item--points"),s=document.querySelector(".menu__points"),l={},r={},d={},a=0,u=function(t){Object.keys(t).forEach(function(e){delete t[e]})},m=function(e){for(var t in l)if(l[t].element===e)return void("false"===(n=l[t]).element.dataset.shirt?r[n.number]=l[n.number]:delete r[n.number]);var n},y=function(e,t,n){if(e){for(var o in r)d[o]=r[o],t(l[o].element),delete l[o],Object.keys(l).length||n(window.constants.SUCCESSFUL_MESSAGE,a);a+=Object.keys(l).length*window.constants.POINT_COEFFICIENT,s.textContent=a}else a-=Object.keys(d).length*window.constants.POINT_COEFFICIENT,s.textContent=a};window.game={logic:function(e,t){m(e);var n=Object.keys(r);2===n.length&&(r[n[0]].URL===r[n[1]].URL?(y(!0,t.delete,t.popup),u(r)):(document.removeEventListener("click",t.callback),setTimeout(function(){t.rotate(r[n[0]].element,r[n[0]]),t.rotate(r[n[1]].element,r[n[1]]),y(!1),u(r),document.addEventListener("click",t.callback)},window.constants.HANG_TIME)))},cardDeck:l,openCards:r,guessedCards:d,points:a,new:function(t){return function(){for(var e in n.innerHTML="",o.style.display="none",i.style.display="block",c.style.display="block",s.textContent=0,u(l),u(r),u(d),a=0,window.cards.make(),l)window.rotate(l[e].element,l[e]);document.removeEventListener("click",t),setTimeout(function(){for(var e in l)window.rotate(l[e].element,l[e]);document.addEventListener("click",t)},window.constants.CARDS_DISPLAY_TIME)}},init:function(){n.innerHTML="",o.style.display="flex",i.style.display="none",c.style.display="none",style.style.display="none",s.textContent=0,u(m)}}}();
+'use strict';
+
+(function () {
+  var field = document.querySelector('.field');
+  var start = document.querySelector('.start');
+  var endItem  = document.querySelector('.menu__item--end');
+  var endButton = document.querySelector('.menu__end');
+  var pointsItem  = document.querySelector('.menu__item--points');
+  var pointsOutput  = document.querySelector('.menu__points');
+
+  var cardDeck = {};
+  var openCards = {};
+  var guessedCards = {};
+  var points = 0;
+
+  // Очищает переданный в качестве аргумента в функцию объект
+  var clearObject = function (obj) {
+    Object.keys(obj).forEach(function (prop) {
+      delete obj[prop];
+    });
+  };
+
+  // Добавляем карту к 'открытым', если она была закрыта, и удаляем из 'открытых', если она была открыта
+  var changeStatus = function (card) {
+    if (card.element.dataset.shirt === 'false') {
+      openCards[card.number] = (cardDeck[card.number]);
+    } else {
+      delete openCards[card.number]
+    }
+  };
+
+  // Находим выбранную карту в колоде и запускаем функцию изменения статуса на 'открытую карту'
+  var checkCard = function (targetCard) {
+    for (var key in cardDeck) {
+      if (cardDeck[key].element === targetCard) {
+        changeStatus(cardDeck[key]);
+        return;
+      }
+    }
+  };
+
+  // Функция очищает поле, объекты с данными, скрывает основной экран, запускает игру
+  var newGame = function (callback) {
+    return function () {
+      clearObject(cardDeck);
+      clearObject(openCards);
+      clearObject(guessedCards);
+      points = 0;
+
+      field.innerHTML = '';
+      start.style.display = 'none';
+      endItem.style.display = 'block';
+      pointsItem.style.display = 'block';
+      pointsOutput.textContent = 0;
+
+      window.cards.make();
+
+      // Переворачиваем все карты рубашкой вниз
+      for (var key in cardDeck) {
+        window.rotate(cardDeck[key].element, cardDeck[key]);
+      }
+
+      // Отключаем возможность клацать на карты и на кнопку 'end'
+      document.removeEventListener('click', callback);
+      endButton.removeEventListener('click', startDisplayInit);
+
+      // Через заданное время возвращаем карты обратно рубашкой кверху и разрешаем клацать пользователю по ним и по кнопке 'end'
+      setTimeout(function() {
+        for (var key in cardDeck) {
+          window.rotate(cardDeck[key].element, cardDeck[key]);
+        }
+
+        document.addEventListener('click', callback);
+        endButton.addEventListener('click', startDisplayInit);
+      }, window.constants.CARDS_DISPLAY_TIME);
+    }
+  };
+
+  // Очищает поле, инициализирует главный экран
+  var startDisplayInit = function () {
+    field.innerHTML = '';
+    start.style.display = 'flex';
+    endItem.style.display = 'none';
+    pointsItem.style.display = 'none';
+    pointsOutput.textContent = 0;
+    clearObject(checkCard);
+  }
+
+  // Функция подсчитывает очки
+  var countPoints = function (isSuccessfully, funcGame, funcEndGame) {
+    if (isSuccessfully) {
+      for (var key in openCards) {
+        guessedCards[key] = openCards[key];
+
+        funcGame(cardDeck[key].element);
+
+        delete cardDeck[key];
+
+        if (!Object.keys(cardDeck).length) {
+          funcEndGame(window.constants.SUCCESSFUL_MESSAGE, points);
+        }
+      }
+
+      points += Object.keys(cardDeck).length * window.constants.POINT_COEFFICIENT;
+      pointsOutput.textContent = points;
+    } else {
+      points -= Object.keys(guessedCards).length * window.constants.POINT_COEFFICIENT;
+      pointsOutput.textContent = points;
+    }
+  };
+
+  /**
+    Запускаем функцию подсчета очков.
+   */
+  var performLogic = function (targetElement, functions) {
+    // Здесь мы запускаем функцию, которая изменит статус выбранной карты на 'открыта'
+    checkCard(targetElement);
+
+    // Чтобы было проще работать с объектом 'открытых карт', записываем его ключи в массив
+    var keys = Object.keys(openCards);
+
+    // Проверяем, если длинна массива с ключами, а соответственно, и длина объекта с открытыми картами равна двум, подсчитываем очки
+    if (keys.length === 2) {
+      if (openCards[keys[0]].URL === openCards[keys[1]].URL) {
+        // Подсчитываем очки
+        countPoints(true, functions.delete, functions.popup);
+
+        // И очищаем объект с данными 'открытых карт'
+        clearObject(openCards);
+      } else {
+        // Отключаем возможность переворачивать другие карты
+        document.removeEventListener('click', functions.callback);
+
+        // На некоторое время показываем карты.
+        setTimeout(function () {
+          // Потом переворачиваем их обратно
+          functions.rotate(openCards[keys[0]].element, openCards[keys[0]]);
+          functions.rotate(openCards[keys[1]].element, openCards[keys[1]]);
+
+          // Подсчитываем очки
+          countPoints(false);
+
+          // И очищаем объект с данными 'открытых карт'
+          clearObject(openCards);
+
+          // Возвращаем обработчик события клика на документ, чтобы снова можно было переворачивать карты
+          document.addEventListener('click', functions.callback);
+        }, window.constants.HANG_TIME);
+      }
+    }
+  };
+
+  window.game = {
+    logic: performLogic,
+    cardDeck: cardDeck,
+    openCards: openCards,
+    guessedCards: guessedCards,
+    points: points,
+    new: newGame,
+    init: startDisplayInit
+  }
+})();
