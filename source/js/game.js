@@ -4,7 +4,6 @@
   var field = document.querySelector('.field');
   var start = document.querySelector('.start');
   var endItem  = document.querySelector('.menu__item--end');
-  var endButton = document.querySelector('.menu__end');
   var pointsItem  = document.querySelector('.menu__item--points');
   var pointsOutput  = document.querySelector('.menu__points');
 
@@ -49,7 +48,6 @@
 
       field.innerHTML = '';
       start.style.display = 'none';
-      endItem.style.display = 'block';
       pointsItem.style.display = 'block';
       pointsOutput.textContent = 0;
 
@@ -62,7 +60,6 @@
 
       // Отключаем возможность клацать на карты и на кнопку 'end'
       document.removeEventListener('click', callback);
-      endButton.removeEventListener('click', startDisplayInit);
 
       // Через заданное время возвращаем карты обратно рубашкой кверху и разрешаем клацать пользователю по ним и по кнопке 'end'
       setTimeout(function() {
@@ -71,7 +68,7 @@
         }
 
         document.addEventListener('click', callback);
-        endButton.addEventListener('click', startDisplayInit);
+        endItem.style.display = 'block';
       }, window.constants.CARDS_DISPLAY_TIME);
     }
   };
