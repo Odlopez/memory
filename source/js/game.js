@@ -4,6 +4,7 @@
   var field = document.querySelector('.field');
   var start = document.querySelector('.start');
   var endItem  = document.querySelector('.menu__item--end');
+  var endButton = document.querySelector('.menu__end');
   var pointsItem  = document.querySelector('.menu__item--points');
   var pointsOutput  = document.querySelector('.menu__points');
 
@@ -41,16 +42,16 @@
   // Функция очищает поле, объекты с данными, скрывает основной экран, запускает игру
   var newGame = function (callback) {
     return function () {
+      clearObject(cardDeck);
+      clearObject(openCards);
+      clearObject(guessedCards);
+      points = 0;
+
       field.innerHTML = '';
       start.style.display = 'none';
       endItem.style.display = 'block';
       pointsItem.style.display = 'block';
       pointsOutput.textContent = 0;
-
-      clearObject(cardDeck);
-      clearObject(openCards);
-      clearObject(guessedCards);
-      points = 0;
 
       window.cards.make();
 
@@ -59,16 +60,18 @@
         window.rotate(cardDeck[key].element, cardDeck[key]);
       }
 
-      // Отключаем возможность клацать на карты
+      // Отключаем возможность клацать на карты и на кнопку 'end'
       document.removeEventListener('click', callback);
+      endButton.removeEventListener('click', startDisplayInit);
 
-      // Через заданное время возвращаем карты обратно рубашкой кверху и разрешаем клацать пользователю по ним
+      // Через заданное время возвращаем карты обратно рубашкой кверху и разрешаем клацать пользователю по ним и по кнопке 'end'
       setTimeout(function() {
         for (var key in cardDeck) {
           window.rotate(cardDeck[key].element, cardDeck[key]);
         }
 
         document.addEventListener('click', callback);
+        endButton.addEventListener('click', startDisplayInit);
       }, window.constants.CARDS_DISPLAY_TIME);
     }
   };
@@ -79,7 +82,6 @@
     start.style.display = 'flex';
     endItem.style.display = 'none';
     pointsItem.style.display = 'none';
-    style.style.display = 'none';
     pointsOutput.textContent = 0;
     clearObject(checkCard);
   }
