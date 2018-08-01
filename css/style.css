@@ -3,13 +3,15 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-width: 480px;
-  max-width: 1500px;
   margin: 0 auto;
+  height: 100vh;
   font-size: 10px;
   font-family: "Open Sans", arial, helvetica, sans-serif;
   background-image: url("../img/bg-4.jpg");
+  background-size: 100% auto;
+  border: 50px solid transparent;
 }
 img {
   max-width: 100%;
@@ -22,15 +24,18 @@ html {
   box-sizing: border-box;
   font-size: 10px;
 }
-@media (min-width: 650px) {
-  html {
-    font-size: 20px;
-  }
-}
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+}
+@media (min-width: 650px) {
+  body {
+    border-width: 60px;
+  }
+  html {
+    font-size: 20px;
+  }
 }
 @font-face {
   font-family: "Open Sans";
@@ -57,8 +62,8 @@ html {
 }
 .card {
   width: 12%;
-  padding-top: 16.8%;
-  margin-top: 20px;
+  padding-top: 14.6875%;
+  margin-top: 1.11111111%;
   margin-left: 4.66666667%;
   background-color: #ffffff;
   background-image: repeating-linear-gradient(135deg, #031927 0, #031927 10px, #508aa8 10px, #508aa8 13px);
@@ -183,14 +188,13 @@ html {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
-  max-width: 1500px;
   margin-left: -4.66666667%;
 }
 .empty-card {
   width: 12%;
-  padding-top: 16.8%;
+  padding-top: 14.6875%;
+  margin-top: 1.11111111%;
   margin-left: 4.66666667%;
-  margin-top: 20px;
 }
 .popup {
   position: fixed;
@@ -224,7 +228,7 @@ html {
   height: 100%;
 }
 .start__image {
-  margin: 50px 0;
+  margin: 5px 0 10px;
 }
 .start__button {
   margin-bottom: 25px;
@@ -252,9 +256,17 @@ html {
   margin: 0;
   padding: 0;
   list-style: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  margin-top: 5px;
+  width: 100%;
+  padding: 5px;
+  background-color: #eeeded;
+  border-radius: 8px;
 }
 .menu__item {
   margin-left: 20px;
@@ -265,9 +277,13 @@ html {
 .menu__item--end {
   display: none;
 }
+.menu__item--music {
+  width: 40px;
+  height: 40px;
+}
 .menu__item--points {
   position: absolute;
-  right: 0;
+  right: 10px;
   display: none;
   font-weight: 700;
   font-size: 1.2rem;
@@ -275,10 +291,10 @@ html {
 }
 .menu__end {
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: "Open Sans", arial, helvetica, sans-serif;
   color: #ffffff;
   background-color: #f1d302;
@@ -298,11 +314,6 @@ html {
   -webkit-filter: grayscale(0.5);
           filter: grayscale(0.5);
 }
-@media (min-width: 650px) {
-  .menu__end {
-    font-size: 0.8rem;
-  }
-}
 .menu__message {
   display: inline-block;
   margin-right: 10px;
@@ -315,9 +326,23 @@ html {
   border: 3px solid white;
   border-radius: 9px;
 }
+@media (min-width: 650px) {
+  .menu {
+    justify-content: center;
+  }
+  .menu__item--music {
+    width: 50px;
+    height: 50px;
+  }
+  .menu__end {
+    width: 50px;
+    height: 50px;
+    font-size: 0.8rem;
+  }
+}
 .music__label {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: inline-block;
   background: #0b1426 url("../img/note.svg") no-repeat center center;
   background-size: 80% auto;
@@ -336,6 +361,12 @@ html {
           filter: grayscale(0.5);
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+@media (min-width: 650px) {
+  .music__label {
+    width: 50px;
+    height: 50px;
+  }
 }
 .music:checked + .music__label {
   background-image: url("../img/mute.svg");
