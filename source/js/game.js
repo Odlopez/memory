@@ -3,6 +3,10 @@
 (function () {
   var field = document.querySelector('.field');
   var start = document.querySelector('.start');
+  var endItem  = document.querySelector('.menu__item--end');
+  var pointsItem  = document.querySelector('.menu__item--points');
+  var pointsOutput  = document.querySelector('.menu__points');
+
   var cardDeck = {};
   var openCards = {};
   var guessedCards = {};
@@ -39,6 +43,9 @@
     return function () {
       field.innerHTML = '';
       start.style.display = 'none';
+      endItem.style.display = 'block';
+      pointsItem.style.display = 'block';
+      pointsOutput.textContent = 0;
 
       clearObject(cardDeck);
       clearObject(openCards);
@@ -70,6 +77,11 @@
   var startDisplayInit = function () {
     field.innerHTML = '';
     start.style.display = 'flex';
+    endItem.style.display = 'none';
+    pointsItem.style.display = 'none';
+    style.style.display = 'none';
+    pointsOutput.textContent = 0;
+    clearObject(checkCard);
   }
 
   // Функция подсчитывает очки
@@ -88,8 +100,10 @@
       }
 
       points += Object.keys(cardDeck).length * window.constants.POINT_COEFFICIENT;
+      pointsOutput.textContent = points;
     } else {
       points -= Object.keys(guessedCards).length * window.constants.POINT_COEFFICIENT;
+      pointsOutput.textContent = points;
     }
   };
 

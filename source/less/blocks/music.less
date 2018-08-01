@@ -1,0 +1,28 @@
+.music__label {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+
+  background: rgb(11, 20, 38) url("../img/note.svg") no-repeat center center;
+  background-size: 80% auto;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    filter: grayscale(0.5);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    filter: grayscale(0.5);
+    transform: scale(1);
+  }
+}
+
+.music:checked + .music__label {
+  background-image: url("../img/mute.svg");
+  background-size: 75% auto;
+  background-color: rgb(255, 255, 255);
+  box-shadow: inset 0 0 0 3px rgb(237, 28, 36);
+}
