@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "gulp-htmlmin": "^4.0.0",
-    "hoek": "^5.0.3"
+    "hoek": "^5.0.3",
+    "npm": "^6.3.0"
   }
 }
