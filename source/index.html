@@ -18,10 +18,26 @@
     <ul class="menu">
       <li class="menu__item menu__item--music">
         <input class="visuallyhidden music menu__music" id="music" type="checkbox">
-        <label class="music__label menu__label" for="music" title="Включить музыку"></label>
+        <label class="music__label button menu__label" for="music" title="Включить музыку"></label>
       </li>
       <li class="menu__item menu__item--end">
-        <button class="menu__end" type="button">END</button>
+        <button class="menu__end button" type="button">END</button>
+      </li>
+      <li class="menu__item menu__item--time-button">
+        <button class="menu__time-button button" type="button">TIME</button>
+      </li>
+      <li class="menu__item menu__item--select">
+        <select class="menu__select" name="time-interval" id="time-interval">
+          <option value="1">1</option>
+          <option value="1.5">1.5</option>
+          <option value="2">2</option>
+          <option value="2.5">2.5</option>
+          <option value="3">3</option>
+        </select>
+      </li>
+      <li class="menu__item menu__item--timer">
+        <span class="menu__message">Осталось времени: </span>
+        <span class="menu__timer">60</span>
       </li>
       <li class="menu__item menu__item--points">
         <span class="menu__message">Ваши очки: </span>
@@ -52,5 +68,20 @@
   <script src="js/main.js"></script>
   <script src="js/radio.js"></script>
   <!-- end SCRIPTS -->
+  <script>
+    var timer = document.querySelector('.menu__time-button');
+    var select = document.querySelector('.menu__select');
+
+    timer.addEventListener('click', function () {
+      if (!select.offsetWidth) {
+        select.style.width = 'auto';
+        select.style.padding = '5px 0 5px 7px';
+      } else {
+        select.style.width = 0;
+        select.style.padding = 0;
+      }
+      timer.classList.toggle('menu__time-button--on');
+    });
+  </script>
 </body>
 </html>

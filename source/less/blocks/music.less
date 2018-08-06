@@ -1,23 +1,14 @@
 .music__label {
-  width: 40px;
-  height: 40px;
   display: inline-block;
 
   background: rgb(11, 20, 38) url("../img/note.svg") no-repeat center center;
   background-size: 80% auto;
-  border-radius: 50%;
-  cursor: pointer;
 
   &:hover,
   &:focus {
     filter: grayscale(0.5);
-    transform: scale(1.1);
   }
 
-  &:active {
-    filter: grayscale(0.5);
-    transform: scale(1);
-  }
 
   @media (min-width: 650px) {
     width: 50px;
