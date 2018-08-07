@@ -62,12 +62,19 @@
 }
 
 .menu__time-button {
+  font-size: 0;
 
-  background-color: rgb(48, 188, 237);
+  background-color: rgb(181, 68, 110);
+  background-image: url("../img/time.svg"),
+    linear-gradient(135deg, rgb(181, 68, 110) 0, rgb(181, 68, 110) 47%, rgb(255, 255, 255) 47%, rgb(255, 255, 255) 53%, rgb(181, 68, 110) 53%, rgb(181, 68, 110) 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70% auto;
   border: 2px solid rgb(255, 255, 255);
 
   &--on {
-    background: linear-gradient(135deg, rgb(181, 68, 110) 0, rgb(181, 68, 110) 47%, rgb(255, 255, 255) 47%, rgb(255, 255, 255) 53%, rgb(181, 68, 110) 53%, rgb(181, 68, 110) 100%);
+    background-color: rgb(48, 188, 237);
+    background-image: url("../img/time.svg");
   }
 }
 
