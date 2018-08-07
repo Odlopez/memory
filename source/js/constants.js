@@ -63,6 +63,7 @@
       ENTER: 13,
       ESC: 27
     },
-    SUCCESSFUL_MESSAGE: 'Вы - молодец! Ваши очки:'
+    SUCCESSFUL_MESSAGE: 'Вы - молодец! Ваши очки:',
+    TIMEOUT_MESSAGE: 'К сожалению, вы не успели! Ваши очки:'
   };
 })();

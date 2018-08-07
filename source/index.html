@@ -28,7 +28,7 @@
       </li>
       <li class="menu__item menu__item--select">
         <select class="menu__select" name="time-interval" id="time-interval">
-          <option value="1">1</option>
+          <option value="1" selected>1</option>
           <option value="1.5">1.5</option>
           <option value="2">2</option>
           <option value="2.5">2.5</option>
@@ -36,11 +36,11 @@
         </select>
       </li>
       <li class="menu__item menu__item--timer">
-        <span class="menu__message">Осталось времени: </span>
-        <span class="menu__timer">60</span>
+        <span class="menu__message">Время: </span>
+        <span class="menu__timer">0</span>
       </li>
       <li class="menu__item menu__item--points">
-        <span class="menu__message">Ваши очки: </span>
+        <span class="menu__message">Очки: </span>
         <span class="menu__points">0</span>
       </li>
     </ul>
@@ -62,26 +62,12 @@
   <script src="js/utilites.js"></script>
   <script src="js/popup.js"></script>
   <script src="js/field.js"></script>
+  <script src="js/state.js"></script>
   <script src="js/game.js"></script>
   <script src="js/rotate.js"></script>
   <script src="js/cards.js"></script>
   <script src="js/main.js"></script>
   <script src="js/radio.js"></script>
   <!-- end SCRIPTS -->
-  <script>
-    var timer = document.querySelector('.menu__time-button');
-    var select = document.querySelector('.menu__select');
-
-    timer.addEventListener('click', function () {
-      if (!select.offsetWidth) {
-        select.style.width = 'auto';
-        select.style.padding = '5px 0 5px 7px';
-      } else {
-        select.style.width = 0;
-        select.style.padding = 0;
-      }
-      timer.classList.toggle('menu__time-button--on');
-    });
-  </script>
 </body>
 </html>

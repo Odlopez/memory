@@ -33,7 +33,7 @@
     display: none;
 
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-family: @font;
   }
 
@@ -44,6 +44,10 @@
     font-weight: 700;
     font-size: 0;
     font-family: @font;
+  }
+
+  &--timer-on {
+    font-size: 1rem;
   }
 }
 
@@ -58,9 +62,6 @@
 }
 
 .menu__time-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   background-color: rgb(48, 188, 237);
   border: 2px solid rgb(255, 255, 255);
@@ -104,7 +105,7 @@
   background-color: rgb(183, 119, 201);
 }
 
-@media (min-width: 650px) {
+@media @tablet {
   .menu {
     justify-content: center;
   }

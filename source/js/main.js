@@ -3,6 +3,7 @@
 (function () {
   var button = document.querySelector('.start__button');
   var endButton = document.querySelector('.menu__end');
+  var timerButton = document.querySelector('.menu__time-button');
 
   // Обработчик события клика на документ
   var onDocumentClick = function (e) {
@@ -32,4 +33,5 @@
   button.addEventListener('click', window.game.new(onDocumentClick));
   document.addEventListener('click', onDocumentClick);
   endButton.addEventListener('click', window.game.init);
+  timerButton.addEventListener('click', window.state.changeSelect);
 })();

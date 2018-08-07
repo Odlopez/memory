@@ -1,11 +1,11 @@
 'use strict';
 
 (function () {
-  var field = document.querySelector('.field');
-  var start = document.querySelector('.start');
   var endItem  = document.querySelector('.menu__item--end');
-  var pointsItem  = document.querySelector('.menu__item--points');
   var pointsOutput  = document.querySelector('.menu__points');
+  var timer = document.querySelector('.menu__timer');
+  var timerButton = document.querySelector('.menu__time-button');
+  var select = document.querySelector('.menu__select');
 
   var cardDeck = {};
   var openCards = {};
@@ -17,6 +17,28 @@
     Object.keys(obj).forEach(function (prop) {
       delete obj[prop];
     });
+  };
+
+  // Запускаем финальный отчет.
+  var finalCountdown = function () {
+    // Переводим выбранное время в секунды
+    var time = select.value * 60;
+
+    // Создаем нашу функцию-интервал, которая уменьшает на 1 каждую секунду оставшееся время.
+    var timerId =  setInterval(function() {
+      timer.textContent = --time;
+
+      // Если время равно нулю, сбрасываем наш интервал
+      if (time === 0) {
+        window.popup.create(window.constants.TIMEOUT_MESSAGE, points);
+        clearInterval(timerId);
+      }
+
+      // Если пользователь нажал клавишу 'END', сбрасываем наш интервал
+      if (endItem.style.display == 'none') {
+        clearInterval(timerId);
+      }
+    }, 1000);
   };
 
   // Добавляем карту к 'открытым', если она была закрыта, и удаляем из 'открытых', если она была открыта
@@ -46,11 +68,7 @@
       clearObject(guessedCards);
       points = 0;
 
-      field.innerHTML = '';
-      start.style.display = 'none';
-      pointsItem.style.display = 'block';
-      pointsOutput.textContent = 0;
-
+      window.state.initGame();
       window.cards.make();
 
       // Переворачиваем все карты рубашкой вниз
@@ -69,17 +87,18 @@
 
         document.addEventListener('click', callback);
         endItem.style.display = 'block';
+
+        if (timerButton.classList.contains('menu__time-button--on')) {
+          finalCountdown();
+        }
+
       }, window.constants.CARDS_DISPLAY_TIME);
     }
   };
 
   // Очищает поле, инициализирует главный экран
   var startDisplayInit = function () {
-    field.innerHTML = '';
-    start.style.display = 'flex';
-    endItem.style.display = 'none';
-    pointsItem.style.display = 'none';
-    pointsOutput.textContent = 0;
+    window.state.initStart();
     clearObject(checkCard);
   }
 
