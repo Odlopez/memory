@@ -338,11 +338,17 @@ html {
   background-color: #ed1c24;
 }
 .menu__time-button {
-  background-color: #30bced;
+  font-size: 0;
+  background-color: #b5446e;
+  background-image: url("../img/time.svg"), linear-gradient(135deg, #b5446e 0, #b5446e 47%, #ffffff 47%, #ffffff 53%, #b5446e 53%, #b5446e 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70% auto;
   border: 2px solid #ffffff;
 }
 .menu__time-button--on {
-  background: linear-gradient(135deg, #b5446e 0, #b5446e 47%, #ffffff 47%, #ffffff 53%, #b5446e 53%, #b5446e 100%);
+  background-color: #30bced;
+  background-image: url("../img/time.svg");
 }
 .menu__select {
   width: 0;
@@ -403,9 +409,9 @@ html {
   }
 }
 .music:checked + .music__label {
+  background-color: #ffffff;
   background-image: url("../img/mute.svg");
   background-size: 75% auto;
-  background-color: #ffffff;
   box-shadow: inset 0 0 0 3px #ed1c24;
 }
 .radio {
