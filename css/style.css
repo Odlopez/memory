@@ -9,8 +9,8 @@ body {
   height: 100vh;
   font-size: 10px;
   font-family: "Open Sans", arial, helvetica, sans-serif;
-  background-image: url("../img/bg-4.jpg");
-  background-size: 100% auto;
+  background-image: url("../img/bg.png");
+  background-size: cover;
   border: 50px solid transparent;
 }
 img {
@@ -299,7 +299,7 @@ html {
   align-items: center;
   width: 100%;
   padding: 5px;
-  background-color: #eeeded;
+  background-color: rgba(208, 207, 207, 0.25);
   border-radius: 8px;
 }
 .menu__item {
